@@ -10,12 +10,12 @@ import javax.annotation.PreDestroy
 @Component
 class CallbackBean : InitializingBean, DisposableBean {
     var greeting: String? = "What's happening?"
-    @PostConstruct
+
     override fun afterPropertiesSet() {
         greeting = "Hello! My name is callbackBean!"
     }
 
-    @PreDestroy
+
     override fun destroy() {
         greeting = "Sorry, but I really have to go."
     }
