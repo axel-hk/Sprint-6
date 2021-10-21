@@ -1,10 +1,13 @@
 package ru.sber.services
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
 @Component
-class ConstructorInjectionService(private val service: Service) {
+class ConstructorInjectionService (private val service: Service) {
 
+    @Autowired constructor() : this(Service())
     constructor(service: Service, someField: Int) : this(AnotherService())
 
     override fun toString(): String {
@@ -14,8 +17,10 @@ class ConstructorInjectionService(private val service: Service) {
 
 @Component
 class FieldInjectionService {
-    private lateinit var service: Service
 
+    @Autowired
+    @Qualifier("service")
+    private lateinit var service: Service
     override fun toString(): String {
         return "$service was injected into FieldInjectionService"
     }
@@ -23,7 +28,12 @@ class FieldInjectionService {
 
 @Component
 class SetterInjectionService {
+
+    @Autowired
+    @Qualifier("service")
     lateinit var service: Service
+
+
 
     override fun toString(): String {
         return "$service was injected into SetterInjectionService"
