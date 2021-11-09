@@ -11,8 +11,4 @@ import ru.sber.services.CombinedBean
 class ServicesConfig {
     @Bean(initMethod = "customInit")
     fun combinedBean() = CombinedBean()
-
-  
-
-
 }
