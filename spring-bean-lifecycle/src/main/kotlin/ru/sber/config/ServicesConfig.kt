@@ -12,8 +12,7 @@ class ServicesConfig {
     @Bean(initMethod = "customInit")
     fun combinedBean() = CombinedBean()
 
-    @Bean(destroyMethod = "destroy")
-    fun callbackBean() = CallbackBean()
+  
 
 
 }
